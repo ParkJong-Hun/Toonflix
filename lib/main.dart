@@ -18,9 +18,12 @@ class App extends StatelessWidget {
                 height: 80,
               ),
               Row(
+                // Row에서 mainAxis는 수평(가로) 방향, Column에서는 수직(세로) 방향.
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Column(
+                    // Row에서 mainAxis는 수직(세로) 방향, Column에서는 수평(가로) 방향.
+                    // 즉, mainAxis의 반대.
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
@@ -34,7 +37,7 @@ class App extends StatelessWidget {
                       Text(
                         'Welcome back',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
+                          color: Color.fromRGBO(255, 255, 255, 0.8),
                           fontSize: 18,
                         ),
                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toonflix/services/api_service.dart';
 
 import '../models/webtoon_model.dart';
+import '../widgets/webtoon_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   final Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
@@ -12,11 +13,11 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 2,
         backgroundColor: Colors.white,
+        foregroundColor: Colors.green,
         title: Text(
           "오늘의 웹툰",
           style: TextStyle(
             fontSize: 24,
-            color: Colors.green,
           ),
         ),
       ),
@@ -48,33 +49,10 @@ class HomeScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       itemBuilder: (context, index) {
         var webtoon = snapshot.data![index];
-        return Column(
-          children: [
-            Container(
-              width: 250,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 15,
-                    offset: Offset(10, 10),
-                    color: Colors.black.withOpacity(0.5),
-                  )
-                ],
-              ),
-              child: Image.network(webtoon.thumb),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              webtoon.title,
-              style: TextStyle(
-                fontSize: 22,
-              ),
-            ),
-          ],
+        return Webtoon(
+          title: webtoon.title,
+          thumb: webtoon.thumb,
+          id: webtoon.id,
         );
       },
       separatorBuilder: (context, index) => SizedBox(width: 40),

@@ -16,7 +16,7 @@ class Episode extends StatelessWidget {
   void onButtonTap() async {
     print("tapped");
     await launchUrlString(
-        "https://comic.naver.com/webtoon/detail?titleId=$webtoon_id&no=${episode.id})");
+        "https://comic.naver.com/webtoon/detail?titleId=$webtoon_id&no=${episode.id}");
   }
 
   @override
